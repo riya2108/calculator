@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Riya's Calculator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f7caf7;
+        }
+
+        #calculator {
+            background-color: #e6b0b0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4caf50;
+        }
+
+        #display {
+            width: 95%;
+            height: 50px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            text-align: right;
+            font-size: 24px;
+            background-color: #e0dede;
+        }
+
+        button {
+            width: 120px;
+            height: 90px;
+            margin: 5px;
+            border: none;
+            border-radius: 3px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #78f4f4;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .operator {
+            background-color: #f0ad4e;
+            color: #fff;
+        }
+
+        .operator:hover {
+            background-color: #d79b42;
+        }
+
+        .equal {
+            background-color: #39f03f;
+            color: #fff;
+        }
+
+        .equal:hover {
+            background-color: #43a047;
+        }
+
+        /* Add a shadow to the calculator */
+        #calculator {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        /* Add a subtle shadow to the buttons */
+        button {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="calculator">
+        <h1>Riya's Calculator</h1>
+        <input type="text" id="display" readonly>
+        <br>
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button onclick="append('/')" class="operator">/</button><br>
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button onclick="append('*')" class="operator">*</button><br>
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button onclick="append('-')" class="operator">-</button><br>
+        <button onclick="append('0')">0</button>
+        <button onclick="append('.')">.</button>
+        <button onclick="calculate()" class="equal">=</button>
+        <button onclick="append('+')" class="operator">+</button>
+    </div>
+
+    <script>
+        let currentInput = '';
+
+        function append(value) {
+            currentInput += value;
+            document.getElementById('display').value = currentInput;
+        }
+
+        function calculate() {
+            try {
+                currentInput = eval(currentInput); 
+                document.getElementById('display').value = currentInput;
+            } catch (error) {
+                document.getElementById('display').value = "Error";
+            }
+            currentInput = ''; // Clear for next calculation
+        }
+    </script>
+
+</body>
+</html>
